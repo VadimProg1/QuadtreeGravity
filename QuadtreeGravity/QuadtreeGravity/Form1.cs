@@ -15,7 +15,8 @@ namespace QuadtreeGravity
         Graphics graphics;
         Random rnd = new Random();
         int winWidth, winHeight, amountOfPoints;
-        List<Point> points = new List<Point>();
+        List<Particle> particles = new List<Particle>();
+        bool mouseOnPictureBox = false;
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace QuadtreeGravity
             amountOfPoints = Convert.ToInt32(numeric_amountOfPoints.Value);
             for(int i = 0; i < amountOfPoints; i++)
             {
-                points.Add(new Point(rnd.Next(0, winWidth), rnd.Next(0, winHeight)));
+                particles.Add(new Particle(rnd.Next(0, winWidth), rnd.Next(0, winHeight), winWidth, winHeight));
             }
             timer1.Start();
         }
@@ -38,36 +39,54 @@ namespace QuadtreeGravity
         private void button_restart_Click(object sender, EventArgs e)
         {
             amountOfPoints = Convert.ToInt32(numeric_amountOfPoints.Value);
-            points.Clear();
+            particles.Clear();
             for (int i = 0; i < amountOfPoints; i++)
             {
-                points.Add(new Point(rnd.Next(0, winWidth), rnd.Next(0, winHeight)));
+                particles.Add(new Particle(rnd.Next(0, winWidth), rnd.Next(0, winHeight), winWidth, winHeight));
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            foreach (var particle in particles)
+            {
+                if (MouseButtons == MouseButtons.Left && mouseOnPictureBox)
+                {
+                    particle.MoveParticleToCursor();
+                }
+                else
+                {
+                    particle.MoveParticle();
+                }
+            }
             Draw();
         }
 
         private void Draw()
         {
             graphics.Clear(Color.Black);
-            foreach (var point in points)
+            foreach (var particle in particles)
             {
-                graphics.FillRectangle(Brushes.White, point.x, point.y, 2f, 2f);
+                graphics.FillRectangle(Brushes.White, particle.position.X, particle.position.Y, 2f, 2f);
             }
             pictureBox1.Refresh();
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-
+            foreach (var particle in particles)
+            {
+                particle.movingToCursor = false;
+            }
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-
+            mouseOnPictureBox = true;
+            foreach (var particle in particles)
+            {
+                particle.SetMouseCoords(e.Location.X, e.Location.Y);
+            }
         }
     }
 }
