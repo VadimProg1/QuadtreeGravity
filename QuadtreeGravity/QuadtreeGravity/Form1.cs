@@ -13,6 +13,7 @@ namespace QuadtreeGravity
     public partial class Form1 : Form
     {
         Graphics graphics;
+        Quadtree quadtree;
         Random rnd = new Random();
         int winWidth, winHeight, amountOfPoints;
         List<Particle> particles = new List<Particle>();
@@ -65,10 +66,17 @@ namespace QuadtreeGravity
         private void Draw()
         {
             graphics.Clear(Color.Black);
+            quadtree = new Quadtree(new Rectangle(winWidth / 2,
+                winHeight / 2,
+                winHeight / 2,
+                winWidth / 2),
+                4, graphics);
             foreach (var particle in particles)
             {
+                quadtree.InsertParticle(particle);
                 graphics.FillRectangle(Brushes.White, particle.position.X, particle.position.Y, 2f, 2f);
             }
+            quadtree.Draw();
             pictureBox1.Refresh();
         }
 
