@@ -16,12 +16,15 @@ namespace QuadtreeGravity
         public float deceleration = 1.02f;
         int winSizeX, winSizeY;
         public bool movingToCursor = false;
-        public Particle(int x, int y, int winSizeX, int winSizeY)
+        public Particle(int x, int y, int winSizeX, int winSizeY, float speed, float deceleration, int decelerationRelativeToDist)
         {
             position.X = x;
             position.Y = y;
             this.winSizeX = winSizeX;
             this.winSizeY = winSizeY;
+            this.speed = speed;
+            this.deceleration = deceleration;
+            this.decelerationRelativeToDist = decelerationRelativeToDist;
         }
         public void SetMouseCoords(int x, int y)
         {
