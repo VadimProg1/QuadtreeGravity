@@ -52,6 +52,7 @@ namespace QuadtreeGravity
             int y = boundary.y;
             int w = boundary.width;
             int h = boundary.height;
+
             Rectangle nw = new Rectangle(x - w / 2, y - h / 2, h / 2, w / 2);
             Rectangle ne = new Rectangle(x + w / 2, y - h / 2, h / 2, w / 2);
             Rectangle sw = new Rectangle(x - w / 2, y + h / 2, h / 2, w / 2);

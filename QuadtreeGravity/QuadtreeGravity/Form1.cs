@@ -24,8 +24,10 @@ namespace QuadtreeGravity
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            winWidth = pictureBox1.Width;
-            winHeight = pictureBox1.Height;
+            //winWidth = pictureBox1.Width;
+            //winHeight = pictureBox1.Height;
+            winWidth = 800;
+            winHeight = 800;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             graphics = Graphics.FromImage(pictureBox1.Image);
             graphics.Clear(Color.Black);

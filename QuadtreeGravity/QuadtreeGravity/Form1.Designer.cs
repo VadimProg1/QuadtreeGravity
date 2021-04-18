@@ -49,6 +49,7 @@ namespace QuadtreeGravity
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -60,24 +61,27 @@ namespace QuadtreeGravity
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(1262, 673);
-            this.splitContainer1.SplitterDistance = 201;
+            this.splitContainer1.Size = new System.Drawing.Size(962, 803);
+            this.splitContainer1.SplitterDistance = 153;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 173);
+            this.label1.Location = new System.Drawing.Point(28, 141);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 17);
+            this.label1.Size = new System.Drawing.Size(111, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Amount of particles";
             // 
             // numeric_amountOfPoints
             // 
-            this.numeric_amountOfPoints.Location = new System.Drawing.Point(59, 203);
+            this.numeric_amountOfPoints.Location = new System.Drawing.Point(44, 165);
+            this.numeric_amountOfPoints.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numeric_amountOfPoints.Name = "numeric_amountOfPoints";
-            this.numeric_amountOfPoints.Size = new System.Drawing.Size(94, 22);
+            this.numeric_amountOfPoints.Size = new System.Drawing.Size(70, 20);
             this.numeric_amountOfPoints.TabIndex = 2;
             this.numeric_amountOfPoints.Value = new decimal(new int[] {
             100,
@@ -87,9 +91,10 @@ namespace QuadtreeGravity
             // 
             // button_restart
             // 
-            this.button_restart.Location = new System.Drawing.Point(59, 382);
+            this.button_restart.Location = new System.Drawing.Point(44, 310);
+            this.button_restart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_restart.Name = "button_restart";
-            this.button_restart.Size = new System.Drawing.Size(94, 33);
+            this.button_restart.Size = new System.Drawing.Size(70, 27);
             this.button_restart.TabIndex = 0;
             this.button_restart.Text = "Restart";
             this.button_restart.UseVisualStyleBackColor = true;
@@ -99,8 +104,9 @@ namespace QuadtreeGravity
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1053, 669);
+            this.pictureBox1.Size = new System.Drawing.Size(802, 799);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
@@ -113,10 +119,11 @@ namespace QuadtreeGravity
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.ClientSize = new System.Drawing.Size(962, 803);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
