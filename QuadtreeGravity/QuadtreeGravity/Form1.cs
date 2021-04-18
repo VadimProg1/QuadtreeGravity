@@ -146,6 +146,11 @@ namespace QuadtreeGravity
             }
         }
 
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            mouseOnPictureBox = false;
+        }
+
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             foreach (var particle in particles)

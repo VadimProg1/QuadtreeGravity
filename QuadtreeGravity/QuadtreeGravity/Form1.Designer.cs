@@ -31,6 +31,10 @@ namespace QuadtreeGravity
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.numeric_deceleration = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numeric_speed = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numeric_massOfCursor = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,19 +42,15 @@ namespace QuadtreeGravity
             this.button_restart = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.numeric_speed = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numeric_deceleration = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_deceleration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_speed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_massOfCursor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_amountOfPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_speed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_deceleration)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -79,6 +79,60 @@ namespace QuadtreeGravity
             this.splitContainer1.Size = new System.Drawing.Size(1283, 988);
             this.splitContainer1.SplitterDistance = 204;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // numeric_deceleration
+            // 
+            this.numeric_deceleration.Location = new System.Drawing.Point(59, 349);
+            this.numeric_deceleration.Name = "numeric_deceleration";
+            this.numeric_deceleration.Size = new System.Drawing.Size(93, 22);
+            this.numeric_deceleration.TabIndex = 9;
+            this.numeric_deceleration.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numeric_deceleration.ValueChanged += new System.EventHandler(this.numeric_deceleration_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(59, 328);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Deceleration";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(71, 253);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Speed ";
+            // 
+            // numeric_speed
+            // 
+            this.numeric_speed.Location = new System.Drawing.Point(59, 273);
+            this.numeric_speed.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numeric_speed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numeric_speed.Name = "numeric_speed";
+            this.numeric_speed.Size = new System.Drawing.Size(93, 22);
+            this.numeric_speed.TabIndex = 6;
+            this.numeric_speed.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numeric_speed.ValueChanged += new System.EventHandler(this.numeric_speed_ValueChanged);
             // 
             // label2
             // 
@@ -166,6 +220,7 @@ namespace QuadtreeGravity
             this.pictureBox1.Size = new System.Drawing.Size(1071, 984);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
@@ -173,60 +228,6 @@ namespace QuadtreeGravity
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // numeric_speed
-            // 
-            this.numeric_speed.Location = new System.Drawing.Point(59, 273);
-            this.numeric_speed.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numeric_speed.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numeric_speed.Name = "numeric_speed";
-            this.numeric_speed.Size = new System.Drawing.Size(93, 22);
-            this.numeric_speed.TabIndex = 6;
-            this.numeric_speed.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numeric_speed.ValueChanged += new System.EventHandler(this.numeric_speed_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 253);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Speed ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(59, 328);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Deceleration";
-            // 
-            // numeric_deceleration
-            // 
-            this.numeric_deceleration.Location = new System.Drawing.Point(59, 349);
-            this.numeric_deceleration.Name = "numeric_deceleration";
-            this.numeric_deceleration.Size = new System.Drawing.Size(93, 22);
-            this.numeric_deceleration.TabIndex = 9;
-            this.numeric_deceleration.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numeric_deceleration.ValueChanged += new System.EventHandler(this.numeric_deceleration_ValueChanged);
             // 
             // Form1
             // 
@@ -243,11 +244,11 @@ namespace QuadtreeGravity
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_deceleration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_speed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_massOfCursor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_amountOfPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_speed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric_deceleration)).EndInit();
             this.ResumeLayout(false);
 
         }
