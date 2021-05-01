@@ -67,7 +67,7 @@ namespace QuadtreeGravity
             graphics.Clear(Color.Black);
             foreach (var particle in particles)
             {
-                graphics.FillRectangle(Brushes.White, particle.position.X, particle.position.Y, 2f, 2f);
+                graphics.DrawEllipse(new Pen(Color.White), particle.position.X, particle.position.Y, particle.radius, particle.radius);
             }
             pictureBox1.Refresh();
         }

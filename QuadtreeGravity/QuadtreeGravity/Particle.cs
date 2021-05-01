@@ -12,6 +12,7 @@ namespace QuadtreeGravity
     {
         public Vector2 velocity = new Vector2(0, 0), position, mousePos;
         public int decelerationRelativeToDist = 100;
+        public int radius = 8;
         public float speed = 0.3f;
         public float deceleration = 1.02f;
         int winSizeX, winSizeY;
