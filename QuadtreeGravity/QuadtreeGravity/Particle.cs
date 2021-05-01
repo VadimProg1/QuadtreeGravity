@@ -32,10 +32,10 @@ namespace QuadtreeGravity
             mousePos.Y = y;
         }
 
-        public void FindVelocity(Vector2 p)
+        public void FindVelocity(Vector2 mouse)
         {
-            float vecX = p.X - position.X;
-            float vecY = p.Y - position.Y;
+            float vecX = mouse.X - position.X;
+            float vecY = mouse.Y - position.Y;
             float dist = (float)Math.Sqrt((vecX * vecX) + (vecY * vecY));
             
             if(dist >= decelerationRelativeToDist)
@@ -49,6 +49,7 @@ namespace QuadtreeGravity
                 velocity.Y += (vecY / dist) * speed;
             }
         }
+
         public void MoveParticleToCursor()
         {
             FindVelocity(new Vector2(mousePos.X, mousePos.Y));
