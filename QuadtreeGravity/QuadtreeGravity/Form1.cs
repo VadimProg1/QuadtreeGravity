@@ -24,8 +24,6 @@ namespace QuadtreeGravity
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //winWidth = pictureBox1.Width;
-            //winHeight = pictureBox1.Height;
             winWidth = 800;
             winHeight = 800;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
@@ -92,7 +90,10 @@ namespace QuadtreeGravity
                 quadtree.InsertParticle(particle);
                 graphics.FillRectangle(Brushes.White, particle.position.X, particle.position.Y, 2f, 2f);
             }
-            quadtree.Draw();
+            if (checkBox_quadtree.Checked)
+            {
+                quadtree.Draw();
+            }
             pictureBox1.Refresh();
         }
 

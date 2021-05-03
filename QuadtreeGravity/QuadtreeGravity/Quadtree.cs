@@ -13,7 +13,7 @@ namespace QuadtreeGravity
         Rectangle boundary;
         List<Particle> points = new List<Particle>();
         Quadtree QTnw, QTne, QTsw, QTse;
-        int capacity, winSizeX, winSizeY;
+        int capacity;
         bool divided = false;
         public Quadtree(Rectangle boundary, int capacity, Graphics graphics)
         {

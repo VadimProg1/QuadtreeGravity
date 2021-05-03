@@ -31,6 +31,7 @@ namespace QuadtreeGravity
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.checkBox_quadtree = new System.Windows.Forms.CheckBox();
             this.numeric_deceleration = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@ namespace QuadtreeGravity
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.checkBox_quadtree);
             this.splitContainer1.Panel1.Controls.Add(this.numeric_deceleration);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -80,6 +82,17 @@ namespace QuadtreeGravity
             this.splitContainer1.SplitterDistance = 204;
             this.splitContainer1.TabIndex = 0;
             // 
+            // checkBox_quadtree
+            // 
+            this.checkBox_quadtree.Checked = true;
+            this.checkBox_quadtree.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_quadtree.Location = new System.Drawing.Point(32, 461);
+            this.checkBox_quadtree.Name = "checkBox_quadtree";
+            this.checkBox_quadtree.Size = new System.Drawing.Size(136, 63);
+            this.checkBox_quadtree.TabIndex = 10;
+            this.checkBox_quadtree.Text = "Отображение алгоритма QuadTree";
+            this.checkBox_quadtree.UseVisualStyleBackColor = true;
+            // 
             // numeric_deceleration
             // 
             this.numeric_deceleration.Location = new System.Drawing.Point(59, 349);
@@ -87,7 +100,7 @@ namespace QuadtreeGravity
             this.numeric_deceleration.Size = new System.Drawing.Size(93, 22);
             this.numeric_deceleration.TabIndex = 9;
             this.numeric_deceleration.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
             0});
@@ -128,7 +141,7 @@ namespace QuadtreeGravity
             this.numeric_speed.Size = new System.Drawing.Size(93, 22);
             this.numeric_speed.TabIndex = 6;
             this.numeric_speed.Value = new decimal(new int[] {
-            100,
+            70,
             0,
             0,
             0});
@@ -161,7 +174,7 @@ namespace QuadtreeGravity
             this.numeric_massOfCursor.Size = new System.Drawing.Size(93, 22);
             this.numeric_massOfCursor.TabIndex = 4;
             this.numeric_massOfCursor.Value = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             0});
@@ -267,6 +280,7 @@ namespace QuadtreeGravity
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numeric_speed;
+        private System.Windows.Forms.CheckBox checkBox_quadtree;
     }
 }
 
