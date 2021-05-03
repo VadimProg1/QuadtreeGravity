@@ -13,13 +13,16 @@ namespace QuadtreeGravity
         public Vector2 velocity = new Vector2(0, 0), position, mousePos;
         public int decelerationRelativeToDist = 100;
         public float speed = 0.3f;
+        public int radius;
+        public bool isColliding = false;
         public float deceleration = 1.02f;
         int winSizeX, winSizeY;
         public bool movingToCursor = false;
-        public Particle(int x, int y, int winSizeX, int winSizeY)
+        public Particle(int x, int y, int winSizeX, int winSizeY, int radius)
         {
             position.X = x;
             position.Y = y;
+            this.radius = radius;
             this.winSizeX = winSizeX;
             this.winSizeY = winSizeY;
         }
@@ -55,7 +58,16 @@ namespace QuadtreeGravity
             velocity.Y /= deceleration;
             CheckForWalls();
         }
-
+        public bool IntersectsWithParticle(Particle particle)
+        {
+            int x1 = (int)position.X;
+            int y1 = (int)position.Y;
+            int x2 = (int)particle.position.X;
+            int y2 = (int)particle.position.Y;
+            int distX = Math.Abs(x2 - x1);
+            int distY = Math.Abs(y2 - y1);
+            return Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2)) < (radius + particle.radius);
+        }
         public void CheckForWalls()
         {
             if(position.X <= 0 || position.X >= winSizeX)
@@ -74,6 +86,7 @@ namespace QuadtreeGravity
             position.X += velocity.X;
             position.Y += velocity.Y;
             CheckForWalls();
+
         }
     }
 }

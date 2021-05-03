@@ -18,14 +18,13 @@ namespace QuadtreeGravity
         int winWidth, winHeight, amountOfPoints;
         List<Particle> particles = new List<Particle>();
         bool mouseOnPictureBox = false;
+        const int PARTICLES_RADIUS = 6;
         public Form1()
         {
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //winWidth = pictureBox1.Width;
-            //winHeight = pictureBox1.Height;
             winWidth = 800;
             winHeight = 800;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
@@ -34,7 +33,7 @@ namespace QuadtreeGravity
             amountOfPoints = Convert.ToInt32(numeric_amountOfPoints.Value);
             for(int i = 0; i < amountOfPoints; i++)
             {
-                particles.Add(new Particle(rnd.Next(0, winWidth), rnd.Next(0, winHeight), winWidth, winHeight));
+                particles.Add(new Particle(rnd.Next(0, winWidth), rnd.Next(0, winHeight), winWidth, winHeight, PARTICLES_RADIUS));
             }
             timer1.Start();
         }
@@ -45,7 +44,7 @@ namespace QuadtreeGravity
             particles.Clear();
             for (int i = 0; i < amountOfPoints; i++)
             {
-                particles.Add(new Particle(rnd.Next(0, winWidth), rnd.Next(0, winHeight), winWidth, winHeight));
+                particles.Add(new Particle(rnd.Next(0, winWidth), rnd.Next(0, winHeight), winWidth, winHeight, PARTICLES_RADIUS));
             }
         }
 
@@ -76,7 +75,18 @@ namespace QuadtreeGravity
             foreach (var particle in particles)
             {
                 quadtree.InsertParticle(particle);
-                graphics.FillRectangle(Brushes.White, particle.position.X, particle.position.Y, 2f, 2f);
+            }
+            foreach (var particle in particles)
+            {
+                List<Particle> list = quadtree.Query(particle, new List<Particle>());
+                if (list.Count != 0)
+                {
+                    graphics.FillEllipse(Brushes.Red, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
+                }
+                else
+                {
+                    graphics.FillEllipse(Brushes.White, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
+                }
             }
             quadtree.Draw();
             pictureBox1.Refresh();

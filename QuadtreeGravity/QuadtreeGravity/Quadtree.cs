@@ -13,7 +13,7 @@ namespace QuadtreeGravity
         Rectangle boundary;
         List<Particle> points = new List<Particle>();
         Quadtree QTnw, QTne, QTsw, QTse;
-        int capacity, winSizeX, winSizeY;
+        int capacity;
         bool divided = false;
         public Quadtree(Rectangle boundary, int capacity, Graphics graphics)
         {
@@ -23,7 +23,7 @@ namespace QuadtreeGravity
         }
         public void InsertParticle(Particle p)
         {
-            if (!boundary.ContainsPoint(new Point((int)p.position.X, (int)p.position.Y)))
+            if (!boundary.ContainsPoint((int)p.position.X, (int)p.position.Y))
             {
                 return;
             }
@@ -36,8 +36,7 @@ namespace QuadtreeGravity
             {
                 if (!divided)
                 {
-                    Subdivide();
-                    divided = true;
+                    Subdivide();                    
                 }
                 QTne.InsertParticle(p);
                 QTnw.InsertParticle(p);
@@ -61,6 +60,35 @@ namespace QuadtreeGravity
             QTne = new Quadtree(ne, 4, graphics);
             QTsw = new Quadtree(sw, 4, graphics);
             QTse = new Quadtree(se, 4, graphics);
+
+            divided = true;
+        }
+
+        public List<Particle> Query(Particle particle, List<Particle> particlesInRange)
+        {
+            if (!boundary.IntersectsWithParticle(particle))
+            {
+                return particlesInRange;
+            }
+            foreach(Particle point in points)
+            {
+                if(point.position.X != particle.position.X 
+                    && point.position.Y != particle.position.Y)
+                {
+                    if (point.IntersectsWithParticle(particle))
+                    {
+                        particlesInRange.Add(point);
+                    }
+                }
+            }
+            if (divided)
+            {
+                particlesInRange = QTne.Query(particle, particlesInRange);
+                particlesInRange = QTnw.Query(particle, particlesInRange);
+                particlesInRange = QTse.Query(particle, particlesInRange);
+                particlesInRange = QTsw.Query(particle, particlesInRange);
+            }
+            return particlesInRange;
         }
 
         public void Draw()
