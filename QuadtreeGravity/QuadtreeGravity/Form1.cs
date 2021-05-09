@@ -18,6 +18,7 @@ namespace QuadtreeGravity
         int winWidth, winHeight, amountOfPoints;
         List<Particle> particles = new List<Particle>();
         bool mouseOnPictureBox = false;
+        const int PARTICLES_RADIUS = 6;
         public Form1()
         {
             InitializeComponent();
@@ -88,7 +89,18 @@ namespace QuadtreeGravity
             foreach (var particle in particles)
             {
                 quadtree.InsertParticle(particle);
-                graphics.FillRectangle(Brushes.White, particle.position.X, particle.position.Y, 2f, 2f);
+            }
+            foreach (var particle in particles)
+            {
+                List<Particle> list = quadtree.Query(particle, new List<Particle>());
+                if (list.Count != 0)
+                {
+                    graphics.FillEllipse(Brushes.Red, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
+                }
+                else
+                {
+                    graphics.FillEllipse(Brushes.White, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
+                }
             }
             if (checkBox_quadtree.Checked)
             {
