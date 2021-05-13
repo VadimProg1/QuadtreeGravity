@@ -18,7 +18,7 @@ namespace QuadtreeGravity
         int winWidth, winHeight, amountOfPoints;
         List<Particle> particles = new List<Particle>();
         bool mouseOnPictureBox = false;
-        const int PARTICLES_RADIUS = 6;
+        const int PARTICLES_RADIUS = 4;
         public Form1()
         {
             InitializeComponent();
@@ -39,7 +39,8 @@ namespace QuadtreeGravity
                         winHeight,
                         0.01f * (float)numeric_speed.Value,
                         1 + 0.001f * (float)numeric_deceleration.Value,
-                        (int)numeric_massOfCursor.Value
+                        (int)numeric_massOfCursor.Value,
+                        PARTICLES_RADIUS
                         ));
             }
             timer1.Start();
@@ -57,7 +58,8 @@ namespace QuadtreeGravity
                         winHeight,
                         0.01f * (float)numeric_speed.Value,
                         1 + 0.001f * (float)numeric_deceleration.Value ,
-                        (int)numeric_massOfCursor.Value
+                        (int)numeric_massOfCursor.Value,
+                        PARTICLES_RADIUS
                         ));
             }
         }
@@ -92,8 +94,7 @@ namespace QuadtreeGravity
             }
             foreach (var particle in particles)
             {
-                List<Particle> list = quadtree.Query(particle, new List<Particle>());
-                if (list.Count != 0)
+                if (particle.Collision(quadtree.Query(particle, new List<Particle>())))
                 {
                     graphics.FillEllipse(Brushes.Red, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
                 }
@@ -122,7 +123,8 @@ namespace QuadtreeGravity
                         winHeight,
                         0.01f * (float)numeric_speed.Value,
                         1 + 0.001f * (float)numeric_deceleration.Value,
-                        (int)numeric_massOfCursor.Value
+                        (int)numeric_massOfCursor.Value,
+                        PARTICLES_RADIUS
                         ));
                 }
             }

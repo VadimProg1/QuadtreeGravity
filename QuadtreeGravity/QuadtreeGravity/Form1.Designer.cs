@@ -207,7 +207,7 @@ namespace QuadtreeGravity
             this.numeric_amountOfPoints.Size = new System.Drawing.Size(93, 22);
             this.numeric_amountOfPoints.TabIndex = 2;
             this.numeric_amountOfPoints.Value = new decimal(new int[] {
-            3000,
+            500,
             0,
             0,
             0});
