@@ -126,17 +126,20 @@ namespace QuadtreeGravity
 
                 float fOverlap = 0.5f * (fDistance - p.radius - radius);
 
-                position.X -= fOverlap * (position.X - p.position.X) / fDistance;
-                position.Y -= fOverlap * (position.Y - p.position.Y) / fDistance;
-                p.position.X += fOverlap * (position.X - p.position.X) / fDistance;
-                p.position.Y += fOverlap * (position.Y - p.position.Y) / fDistance;
+                float fX = fOverlap * (position.X - p.position.X) / fDistance;
+                float fY = fOverlap * (position.Y - p.position.Y) / fDistance;
+                position.X -= fX;
+                position.Y -= fY;
+                p.position.X += fX;
+                p.position.Y += fY;
 
                 float nx = vecX / fDistance;
                 float ny = vecY / fDistance;
 
                 float kx = velocity.X - p.velocity.X;
                 float ky = velocity.Y - p.velocity.Y;
-                float t = 2.0f * (nx * kx + ny * ky) / (1 + 1);
+                float t = 2.0f * (nx * kx + ny * ky) / 2;
+
                 velocity.X = velocity.X - t * 1 * nx;
                 velocity.Y = velocity.Y - t * 1 * ny;
                 p.velocity.X = p.velocity.X + t * 1 * nx;

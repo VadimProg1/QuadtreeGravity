@@ -77,11 +77,6 @@ namespace QuadtreeGravity
                     particle.MoveParticle();
                 }
             }
-            Draw();
-        }
-
-        private void Draw()
-        {
             graphics.Clear(Color.Black);
             quadtree = new Quadtree(new Rectangle(winWidth / 2,
                 winHeight / 2,
@@ -94,14 +89,16 @@ namespace QuadtreeGravity
             }
             foreach (var particle in particles)
             {
-                if (particle.Collision(quadtree.Query(particle, new List<Particle>())))
-                {
-                    graphics.FillEllipse(Brushes.Red, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
-                }
-                else
-                {
-                    graphics.FillEllipse(Brushes.White, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
-                }
+                particle.Collision(quadtree.Query(particle, new List<Particle>()));
+            }
+            Draw();
+        }
+
+        private void Draw()
+        {
+            foreach (var particle in particles)
+            {
+                graphics.FillEllipse(Brushes.White, particle.position.X, particle.position.Y, particle.radius * 2, particle.radius * 2);
             }
             if (checkBox_quadtree.Checked)
             {
